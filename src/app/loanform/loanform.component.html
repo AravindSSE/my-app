@@ -1,0 +1,46 @@
+<form [formGroup]="form">
+    <div class="container">
+      <h1>{{pageName}}</h1>
+      <hr>
+
+      <label for="FirstName"><b>FirstName</b></label>
+      <input type="text" formControlName="firstName" [(ngModel)]="loan.FirstName" placeholder="Enter FirstName" name="FirstName" >
+      <div *ngIf="form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)" >
+        <div *ngIf="form.controls['firstName'].errors" class="errorText">
+        Please enter FirstName
+      </div>
+    </div>
+  
+  
+      <label for="LastName"><b>LastName</b></label>
+      <input type="text" formControlName="lastName" [(ngModel)]="loan.LastName" placeholder="Enter LastName" name="LastName" >
+      <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)" >
+        <div *ngIf="form.controls['lastName'].errors" class="errorText">
+        Please enter LastName
+      </div>
+    </div>
+
+
+      <label for="Amount"><b>Amount</b></label>
+      <input type="text" formControlName="Amount" [(ngModel)]="loan.Amount" placeholder="Enter Amount" name="Amount" >
+      <div *ngIf="form.controls['Amount'].invalid && (form.controls['Amount'].dirty || form.controls['Amount'].touched)" >
+        <div *ngIf="form.controls['Amount'].errors" class="errorText">
+        Please enter Amount
+      </div>
+    </div>
+
+
+      <label for="Loanterm"><b>Loanterm</b></label>
+      <input type="text" formControlName="Loanterm" [(ngModel)]="loan.Loanterm" placeholder="Enter Loanterm" name="Loanterm" >
+      <div *ngIf="form.controls['Loanterm'].invalid && (form.controls['Loanterm'].dirty || form.controls['Loanterm'].touched)" >
+        <div *ngIf="form.controls['Loanterm'].errors" class="errorText">
+        Please enter Loanterm
+      </div>
+    </div>
+    
+  
+      <button type="submit" (click)="Register()" class="registerbtn">{{buttonName}}</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <button type="submit" (click)="cancle()" class="Canclebtn">Cancle</button>
+    </div>
+
+  </form>

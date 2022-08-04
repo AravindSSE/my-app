@@ -1,0 +1,38 @@
+<div class="heading"> Loan Management System</div>
+
+<div class="card">
+    <h4 class="card-header">Login</h4>
+    <div class="card-body">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label class="center-block">Username:
+                  <input class="form-control" formControlName="username" [ngClass]="{ 'is-invalid': submitted && form.controls['username'].errors }">
+                </label>
+                <div *ngIf="form.controls['username'].invalid && (form.controls['username'].dirty || form.controls['username'].touched)" >
+                    <div *ngIf="form.controls['username'].errors" class="errorText">
+                    Please enter username
+                  </div>
+                </div>
+              </div>
+             
+              <div class="form-group">
+                <label class="center-block">Password:
+                  <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid': submitted && form.controls['password'].errors }">
+                </label>
+                <div *ngIf="form.controls['password'].invalid && (form.controls['password'].dirty || form.controls['password'].touched)" >
+                    <div *ngIf="form.controls['password'].errors" class="errorText">
+                    Please enter password
+                  </div>
+                </div>
+              </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Login
+                </button> <div *ngIf="showerror" class="errorText" >{{errormsg}} </div>
+                
+              
+            </div>
+        </form>
+    </div>
+</div>

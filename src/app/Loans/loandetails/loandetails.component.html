@@ -1,0 +1,60 @@
+
+<div>
+
+    <h1 class= "heading">Search Loan:</h1>
+
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+        </thead>
+        <tbody>
+            <tr>
+               
+                <th>Loan No</th>
+                <th ><input type="text" name="LoanNo"></th>
+                <th>FirstName</th>
+                <th><input type="text"  name="FirstName"></th>
+                <th>LastName</th>
+                <th><input type="text"  name="LastName"></th>
+                <th><button  class="btn btn-primary" (click)="search()">Search</button></th>
+                <th><button  class="btn btn-primary" (click)="addNew()">Add</button></th>
+                
+            </tr>
+           
+        </tbody>
+    </table>
+</div>
+
+
+
+
+<div class="container">
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th>SNo</th>
+                <th>LoanNo</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>Amount</th>
+                <th>Term</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let loan of loans;let i = index;">
+               <td>{{i+1}}</td> 
+                <td>{{loan.LoanNo}}</td>
+                <td>{{loan.FirstName}}</td>
+                <td>{{loan.LastName}}</td>
+                <td>{{loan.Amount}}</td>
+                <td>{{loan.Loanterm}}</td>
+                <td>
+                    <button (click)="edit(loan)" ><img src="./assets/icon/edit_3.png"></button>
+                  </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+

@@ -1,0 +1,29 @@
+.errorText {
+    color: red;
+  }
+
+  .card {
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1pxsolidrgba(0,0,0,.125);
+    border-radius: 0.25rem;
+    width: 400px;
+    height: 330px;
+    margin-left: 100px;
+  
+}
+
+.heading{
+    font-size: 40px;
+    margin-left: 10px;
+    padding-left: 20px;
+    margin-top: -50px;
+    margin-bottom: 20px;
+}
