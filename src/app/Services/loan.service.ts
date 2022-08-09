@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ILoandetails } from 'src/app/models/loanmodels';
+import { ILoandetails, IUser } from 'src/app/models/loanmodels';
 import { HttpClient } from "@angular/common/http"; 
 
 
@@ -11,9 +11,17 @@ import { HttpClient } from "@angular/common/http";
 export class LoanService {
   private isHeadShowSubject: BehaviorSubject<boolean>;
   public isHeadshow: Observable<boolean>;
+
+   private UserNameDisplaySub: BehaviorSubject<String>;
+   public  UserNameDisplay: Observable<String>;
+
+
   constructor(private http: HttpClient) {
     this.isHeadShowSubject = new BehaviorSubject<boolean>(false);
     this.isHeadshow = this.isHeadShowSubject.asObservable();
+
+    this.UserNameDisplaySub = new BehaviorSubject<String>(" ");
+    this.UserNameDisplay = this.UserNameDisplaySub.asObservable();
    }
 
 
@@ -27,44 +35,45 @@ export class LoanService {
     }
 }
 
-public search(): Array<ILoandetails>{
-
- // return this.http.get('http://localhost:1680/api/employee/Getdetaisl')
-
-  return this.loaddata()
-}
-
-public getdetails() {    
-  debugger;    
-  return this.http.get('http://localhost:5000/Loan/GetAll')    
+public login_1(username: string, password: string) {  
+  debugger  
+  let user: IUser= { Id: 1, UserName: username, Password: password}
+  return this.http.post('https://localhost:5001/WeatherForecast/Login', user)  
 } 
 
 public isHeadShow(isShow: boolean):void{
- this.isHeadShowSubject.next(isShow);
+  this.isHeadShowSubject.next(isShow);
+ }
+
+ public displayUserName(username: string):void{
+  this.UserNameDisplaySub.next(username);
+ }
+
+public getdetails() {    
+  return this.http.get('https://localhost:5001/WeatherForecast/GetAll')  
 }
 
-public getdetailsbyid(id: number):  ILoandetails{
-let loandetails: any;
+public getdetailsbyId(id: number) {    
+  return this.http.get('https://localhost:5001/WeatherForecast/'+id)  
+} 
 
-debugger
-let loandetailsarray = this.loaddata();
-loandetails =loandetailsarray.find( element => element.id === id)
+public addNewLoan(loan: ILoandetails) {    
+  return this.http.post('https://localhost:5001/WeatherForecast/',loan)  
+} 
 
-return loandetails 
-}
+public updateLoan(loan: ILoandetails) {    
+  return this.http.put('https://localhost:5001/WeatherForecast/',loan)  
+} 
 
-public loaddata(): Array<ILoandetails> {
-
-  let loandetails = new Array<ILoandetails>();
-  loandetails = [ { id: 1, LoanNo : "L001",FirstName: "Aravind",LastName: "Kumar", Amount: "1000", Loanterm: 3},
-  { id: 2, LoanNo : "L002",FirstName: "Raj",LastName: "Kumar",Amount: "2000",  Loanterm: 4},
-  { id: 3, LoanNo : "L003",FirstName: "Ram",LastName: "Kumar", Amount: "3000", Loanterm: 5}
-]
+public search(loan: ILoandetails) {  
+  debugger  
+ // let user: IUser= { Id: 1, UserName: "ara", Password: "pass"}
+  return this.http.post('https://localhost:5001/WeatherForecast/Search', loan)  
+} 
 
 
-  return loandetails;
 
-}  
+  
 
 
 

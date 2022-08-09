@@ -10,7 +10,7 @@ import { LoanService } from 'src/app/Services/loan.service';
 })
 export class LoandetailsComponent implements OnInit {
   loans: Array<ILoandetails>=[];
-  searchLoan: ILoandetails ={ id: 0,LoanNo:"", FirstName: "",LastName: "",Amount:"",  Loanterm: 0};
+  searchLoan: ILoandetails ={ id: 0,loanNo:"", firstName: "",lastName: "",amount:0,  loanterm: 0, loanType: "", property_Address: ""};
 
   constructor(
     private route: ActivatedRoute,
@@ -26,21 +26,16 @@ export class LoandetailsComponent implements OnInit {
   }
 
   public search(): void{
-    debugger
-   // console.log(this.searchLoan)
-    this.loans = this.loanService.search()
-   //this.loanService.search_1()
-   this.test()
+ //  this.loanService.getdetails().subscribe((data: any) => {    
+ //   this.loans =  data
+ //   }); 
+
+    this.loanService.search(this.searchLoan).subscribe((data: any) => { 
+      this.loans =  data
+      }); 
   }
 
-  public test(){
-    this.loanService.getdetails().subscribe((data: any) => {    
-    //  this.name = data;  
-    debugger  
-      console.log(data);    
-     // this.shareDataService.Employeename = this.name;    
-    }) 
-  }
+
 
   public edit(loan: ILoandetails): void{
     this.router.navigate(['/loanform', {id: loan.id}] );

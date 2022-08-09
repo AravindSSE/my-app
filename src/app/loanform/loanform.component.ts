@@ -13,7 +13,7 @@ import { LoanService } from 'src/app/Services/loan.service';
 })
 export class LoanformComponent implements OnInit {
   form: FormGroup;
-  loan: ILoandetails ={ id: 0,LoanNo:"", FirstName: "",LastName: "",Amount:"",  Loanterm: 0};
+  loan: ILoandetails ={ id: 0,loanNo:"", firstName: "",lastName: "",amount:0,  loanterm: 0,  loanType: "", property_Address: ""};
   id: number = 0;
   pageName: string = ""
   buttonName: string = ""
@@ -32,6 +32,8 @@ export class LoanformComponent implements OnInit {
       lastName: ['', Validators.required],
       Amount: ['', Validators.required],
       Loanterm: ['', Validators.required],
+      loantype: ['', Validators.required],
+      address: ['', Validators.required],
               
   });
 
@@ -51,7 +53,18 @@ export class LoanformComponent implements OnInit {
   }
 
   public getdetailsbyid(id: number):  void{
-   this.loan = this.loanService.getdetailsbyid(id);
+  // this.loan = this.loanService.getdetailsbyid(id);
+
+   let loandetails: any;
+  this.loanService.getdetailsbyId(id).subscribe((data: any) => {    
+    //  this.name = data;  
+    this.loan=  data
+    debugger  
+      console.log(data);    
+     // this.shareDataService.Employeename = this.name;    
+    }) 
+
+   debugger
   }
 
    public cancle(): void{
@@ -59,12 +72,28 @@ export class LoanformComponent implements OnInit {
    }
 
    public Register(): void{
+     debugger
     if (this.form.invalid) { 
       Object.keys( this.form.controls).forEach(key => {
         this.form.controls[key].markAsDirty();
       });
       return;
     }
+
+    if(this.buttonName = "Create"){
+      this.loanService.addNewLoan(this.loan).subscribe((data: any) => {  
+        debugger;  
+        this.router.navigate(['/loan'] );
+        })
+    } else {
+      this.loanService.updateLoan(this.loan).subscribe((data: any) => {  
+        debugger;  
+        this.router.navigate(['/loan'] );
+        })
+    }
+    
+
+
   }
 
 }

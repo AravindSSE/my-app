@@ -60,12 +60,19 @@ export class LoginComponent implements OnInit {
     
 
 
-     if(this.loanService.login(this.form.controls['username'].value, this.form.controls['password'].value)) {
-      this.router.navigate(['/loan']);
-     } else{
-      this.errormsg = "Invalid Username and Password";
-      this.showerror = true;
-     }
+      this.loanService.login_1(this.form.controls['username'].value, this.form.controls['password'].value).subscribe((data: any) => { 
+       debugger
+          if(data === true){
+            localStorage.setItem("user",this.form.controls['username'].value);
+            this.router.navigate(['/loan']);
+          } else {
+            this.errormsg = "Invalid Username and Password";
+            this.showerror = true;
+          }
+        }); 
+
+
+
 
 
      

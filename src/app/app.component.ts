@@ -8,26 +8,31 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'my-app';
+  title = 'Loan Application';
   isShow: boolean = false;
+  userName: String = "";
   constructor(
     private loanService: LoanService,
     private router: Router,
   ) {
     debugger
     this.loanService.isHeadshow.subscribe(
-   
-      (value => this.isShow = value
-
-
+      (
+        value => this.isShow = value
       ));
 
-  //  numbers.subscribe(value => console.log("Subscriber: " + value));						
+      this.loanService.UserNameDisplay.subscribe(
+        (
+          value => this.userName = value
+        ));
+
+ 
 
    
   }
 
   public logout(): void{
     this.router.navigate([''] );
+    localStorage.clear();
   }
 }

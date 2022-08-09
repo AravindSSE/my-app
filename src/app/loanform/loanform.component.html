@@ -4,7 +4,7 @@
       <hr>
 
       <label for="FirstName"><b>FirstName</b></label>
-      <input type="text" formControlName="firstName" [(ngModel)]="loan.FirstName" placeholder="Enter FirstName" name="FirstName" >
+      <input type="text" formControlName="firstName" [(ngModel)]="loan.firstName" placeholder="Enter FirstName" name="FirstName" >
       <div *ngIf="form.controls['firstName'].invalid && (form.controls['firstName'].dirty || form.controls['firstName'].touched)" >
         <div *ngIf="form.controls['firstName'].errors" class="errorText">
         Please enter FirstName
@@ -13,7 +13,7 @@
   
   
       <label for="LastName"><b>LastName</b></label>
-      <input type="text" formControlName="lastName" [(ngModel)]="loan.LastName" placeholder="Enter LastName" name="LastName" >
+      <input type="text" formControlName="lastName" [(ngModel)]="loan.lastName" placeholder="Enter LastName" name="LastName" >
       <div *ngIf="form.controls['lastName'].invalid && (form.controls['lastName'].dirty || form.controls['lastName'].touched)" >
         <div *ngIf="form.controls['lastName'].errors" class="errorText">
         Please enter LastName
@@ -22,7 +22,7 @@
 
 
       <label for="Amount"><b>Amount</b></label>
-      <input type="text" formControlName="Amount" [(ngModel)]="loan.Amount" placeholder="Enter Amount" name="Amount" >
+      <input type="text" formControlName="Amount" [(ngModel)]="loan.amount" placeholder="Enter Amount" name="Amount" >
       <div *ngIf="form.controls['Amount'].invalid && (form.controls['Amount'].dirty || form.controls['Amount'].touched)" >
         <div *ngIf="form.controls['Amount'].errors" class="errorText">
         Please enter Amount
@@ -31,12 +31,29 @@
 
 
       <label for="Loanterm"><b>Loanterm</b></label>
-      <input type="text" formControlName="Loanterm" [(ngModel)]="loan.Loanterm" placeholder="Enter Loanterm" name="Loanterm" >
+      <input type="text" formControlName="Loanterm" [(ngModel)]="loan.loanterm" placeholder="Enter Loanterm" name="Loanterm" >
       <div *ngIf="form.controls['Loanterm'].invalid && (form.controls['Loanterm'].dirty || form.controls['Loanterm'].touched)" >
         <div *ngIf="form.controls['Loanterm'].errors" class="errorText">
         Please enter Loanterm
       </div>
     </div>
+
+    <label for="loantype"><b>LoanType</b></label>
+    <input type="text" formControlName="loantype" [(ngModel)]="loan.loanType" placeholder="Enter the loantype" name="loantype" >
+    <div *ngIf="form.controls['loantype'].invalid && (form.controls['loantype'].dirty || form.controls['loantype'].touched)" >
+      <div *ngIf="form.controls['loantype'].errors" class="errorText">
+      Please enter loantype
+    </div>
+  </div>
+
+  <label for="address"><b>Address</b></label>
+  <input type="text" formControlName="address" [(ngModel)]="loan.property_Address" placeholder="Enter the address" name="address" >
+  <div *ngIf="form.controls['address'].invalid && (form.controls['address'].dirty || form.controls['address'].touched)" >
+    <div *ngIf="form.controls['address'].errors" class="errorText">
+    Please enter Address
+  </div>
+</div>
+
     
   
       <button type="submit" (click)="Register()" class="registerbtn">{{buttonName}}</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

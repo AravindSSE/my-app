@@ -11,11 +11,11 @@
             <tr>
                
                 <th>Loan No</th>
-                <th ><input type="text" name="LoanNo"></th>
+                <th ><input type="text" name="LoanNo" ></th>
                 <th>FirstName</th>
-                <th><input type="text"  name="FirstName"></th>
+                <th><input type="text"  name="FirstName" ></th>
                 <th>LastName</th>
-                <th><input type="text"  name="LastName"></th>
+                <th><input type="text"  name="LastName" ></th>
                 <th><button  class="btn btn-primary" (click)="search()">Search</button></th>
                 <th><button  class="btn btn-primary" (click)="addNew()">Add</button></th>
                 
@@ -44,11 +44,11 @@
         <tbody>
             <tr *ngFor="let loan of loans;let i = index;">
                <td>{{i+1}}</td> 
-                <td>{{loan.LoanNo}}</td>
-                <td>{{loan.FirstName}}</td>
-                <td>{{loan.LastName}}</td>
-                <td>{{loan.Amount}}</td>
-                <td>{{loan.Loanterm}}</td>
+                <td>{{loan.loanNo}}</td>
+                <td>{{loan.firstName}}</td>
+                <td>{{loan.lastName}}</td>
+                <td>{{loan.amount}}</td>
+                <td>{{loan.loanterm}}</td>
                 <td>
                     <button (click)="edit(loan)" ><img src="./assets/icon/edit_3.png"></button>
                   </td>
